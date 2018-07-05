@@ -38,10 +38,12 @@
      
 /// THIRD TUTORIAL 
 
-//  let dataset = [5, 7, 56, 120, 180, 30, 40, 120, 160]
+//  let dataset = [40, 250, 56, 120, 180, 30, 40, 120, 160]
 
-//  let svgWidth = 500, svgHeight = 300, barPadding = 10;
+//  let svgWidth = 500, svgHeight = 300, barPadding = 5;
 //  let barWidth = (svgWidth / dataset.length);
+
+// let svgWidth = 500, svgHeight = 300;
 
 //  let svg = d3.select('svg')
 //     .attr("width", svgWidth)
@@ -51,15 +53,53 @@
 //     .data(dataset)
 //     .enter()
 //     .append("rect")
-//     .attr("y", (data) => { return svgHeight - data
-//     })
-//     .attr("height", (data) => { return data
-//     })
+
+//     .attr("y", (data) => { return svgHeight - data})
+//     .attr("height", (data) => { return data})
+
 //     .attr("width", barWidth - barPadding)
 //     .attr("transform", (data, index) => {
 //         let translate = [barWidth * index, 0];
 //         return "translate("+translate +")"
-//     });
+//     })
  
 
-// Fourth Tutorial
+// Fourth Tutorial adding labels
+
+// let text = svg.selectAll("text")
+//     .data(dataset)
+//     .enter()
+//     .append("text")
+//     .text((data) => {
+//         return data
+//     })
+//     .attr("y", (data, index) => {
+//         return svgHeight - data - 2;
+//     })
+//     .attr("x", (data, index) => {
+//         return barWidth * index;
+//     })
+//     .attr("fill", "#FF0800") 
+
+// Fifth Tutorial adding Scales
+
+// let xScale = d3.scaleLinear()
+//     .domain([0, d3.max(dataset)])
+//     .range([0, svgWidth]);
+
+// let yScale = d3.scaleLinear()
+//     .domain([0, d3.max(dataset)]) 
+//     .range([svgHeight, 0]);
+
+// let x_axis = d3.axisBottom().scale(xScale);
+// let y_axis = d3.axisLeft().scale(yScale);
+
+// svg.append("g")
+//     .attr("transform", "translate(50, 10)")
+//     .call(y_axis);
+
+// let xAxisTranslate = svgHeight - 20;
+
+// svg.append("g")
+//     .attr("transform", "translate(50, " + xAxisTranslate +")")
+//     .call(x_axis);
